@@ -1,6 +1,7 @@
 import os
 from tkinter import *
 from tkinter import ttk
+import tkinter.font as tkFont
 
 # Global variable to keep track of root node ID
 root_node_id = None
@@ -97,6 +98,14 @@ tree_dirs.heading('#0', text='Directories', anchor='w')
 tree_files = ttk.Treeview(middle_frame)
 tree_files.pack(side=LEFT, fill=BOTH, expand=True)
 tree_files.heading('#0', text='Files', anchor='w')
+
+# Define a bold font for headings
+bold_font = tkFont.Font(family="Segoe UI", size=10, weight="bold")
+
+# Styling Treeview headings
+style = ttk.Style()
+style.theme_use("default")
+style.configure("Treeview.Heading", background="#d9ead3", foreground="black", font=bold_font)
 
 # Initial population
 root_node_id = populate_treeview(cwd)
